@@ -69,9 +69,10 @@ class FileQuiz:
         #print(final_accuracy_students)
         final_accuracy = []
         for each_student in final_accuracy_students:
-            final_accuracy.append({"complete_name": each_student, "Accuracy": final_accuracy_students[each_student]/len(files_names_list)})
-        #print(final_accuracy)
-
+            if final_accuracy_students[each_student]/len(files_names_list)>percent_accuracy:
+                #print(final_accuracy_students[each_student])
+                final_accuracy.append({"complete_name": each_student, "Accuracy": final_accuracy_students[each_student]/len(files_names_list)})
+       
         accuracy_average_total = {}
         for student in final_accuracy:
             if student["complete_name"] in accuracy_average_total.keys():
@@ -81,6 +82,7 @@ class FileQuiz:
         
         accuracy_average_total = sorted(accuracy_average_total.items(), key=lambda item:item[1], reverse=True)
         print(accuracy_average_total)
+        
 
         #for ordered_students in range(len(final_accuracy_students)):
         #    print(ordered_students+1, final_accuracy_students[ordered_students])
@@ -91,4 +93,4 @@ all_data = FileQuiz(files_names_list)
 all_data.getQuizes() # get the students number from first file reviewed
 #print(qty_student_first_file)
 all_data.getBestScoresStudents(int(input("Please, select the quantity the best qualify students:" )))
-all_data.getBestAccuracyStudents(int(input("Please, select the percent the best accuracy students:" )))
+all_data.getBestAccuracyStudents(int(input("Please, type the percent the best accuracy students:" )))
