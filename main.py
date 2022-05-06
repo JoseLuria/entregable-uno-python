@@ -81,16 +81,14 @@ class FileQuiz:
                 accuracy_average_total[student["complete_name"]] = student["Accuracy"]
         
         accuracy_average_total = sorted(accuracy_average_total.items(), key=lambda item:item[1], reverse=True)
-        print(accuracy_average_total)
         
-
-        #for ordered_students in range(len(final_accuracy_students)):
-        #    print(ordered_students+1, final_accuracy_students[ordered_students])
-    
+        for student in range(len(accuracy_average_total)):
+            print(student+1, accuracy_average_total[student])
+            
 
 all_data = FileQuiz(files_names_list)
 #qty_student_first_file = all_data.getQuiz() # get the students number from first file reviewed
 all_data.getQuizes() # get the students number from first file reviewed
 #print(qty_student_first_file)
-all_data.getBestScoresStudents(int(input("Please, select the quantity the best qualify students:" )))
+all_data.getBestScoresStudents(int(input("Please, select the quantity the best students qualifications:" )))
 all_data.getBestAccuracyStudents(int(input("Please, type the percent the best accuracy students:" )))
